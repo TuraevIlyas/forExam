@@ -84,8 +84,10 @@ function convertTime($inputCityAndTime): bool
     foreach ($cityChooseArray as $city) {
         if ($city[0] != $inputCityAndTime[0]) {
             $hoursInput = intval((($inputCityAndTime[1] - ($ourCityTimeZone - $city[1]) * 100) % 2400) / 100);
-            if ($hoursInput < 0) {
+            if ($hoursInput < 0 and $inputCityAndTime[1] % 100 == 0) {
                 echo $city[0] . " - " . (24 + $hoursInput) . ":";
+            } elseif ($hoursInput < 0) {
+                echo $city[0] . " - " . (23 + $hoursInput) . ":";
             } else {
                 echo $city[0] . " - " . $hoursInput . ":";
             }
