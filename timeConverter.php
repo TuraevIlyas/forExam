@@ -41,6 +41,11 @@ function checkInputCityNameAndTime($inputVariable): bool
     }
 
     if (count($inputVariable) == 2) {
+        if($inputVariable[1][0] == "+" or $inputVariable[1][0]){
+            echo "Wrong format input";
+            return false;
+        }
+
         if (!is_numeric($inputVariable[1])) {
             echo "You entered word instead time";
             return false;
